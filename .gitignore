@@ -83,3 +83,15 @@ target/
 lite/_output/
 lite/.jupyterlite.doit.db
 lite/aima-*.whl
+
+# Environnement Python local
+.venv312/
+
+# Fichiers de sauvegarde
+*.bak
+
+# Notes personnelles
+patrice.txt
+
+# Notebook temporaire
+Untitled.ipynb

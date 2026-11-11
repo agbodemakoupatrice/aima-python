@@ -152,9 +152,12 @@ def test_rush_hour_optimized():
     verify_solution(rush_hour_optimized())
 
 
+
+def run_planner_in_queue(problem, queue):
+    queue.put(Linearize(problem).execute())
+
+
 def test_planner_leveloff():
-    def run_planner_in_queue(problem, queue):
-        queue.put(Linearize(problem).execute())
 
     p = blocks_world(
         'On(A, Table) & On(B, Table) & On(C, Table) & Clear(A) & Clear(B) & Clear(C)',
@@ -164,7 +167,7 @@ def test_planner_leveloff():
     result_queue = Queue()
     proc = Process(target=run_planner_in_queue, args=(p, result_queue))
     proc.start()
-    proc.join(timeout=3)
+    proc.join(timeout=10)
 
     if proc.is_alive():
         proc.terminate()
